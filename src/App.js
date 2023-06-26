@@ -22,9 +22,10 @@ import {
 } from "./pages";
 
 import "./App.css";
+import { useStateContext } from "./contexts/ContextProvider";
 
 function App() {
-  const activeMenu = true;
+  const { activeMenu } = useStateContext();
 
   return (
     <div>
