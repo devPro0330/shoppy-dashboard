@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
-import { Sidebar, Navbar, Header, Footer } from "./components";
+import { Sidebar, Navbar, Header, Footer, ThemeSettings } from "./components";
 import {
   Ecommerce,
   Orders,
@@ -25,7 +25,7 @@ import "./App.css";
 import { useStateContext } from "./contexts/ContextProvider";
 
 function App() {
-  const { activeMenu } = useStateContext();
+  const { activeMenu, themeSettings, setThemeSettings } = useStateContext();
 
   return (
     <div>
@@ -37,6 +37,7 @@ function App() {
                 type="button"
                 className="p-3 text-3xl text-white hover:drop-shadow-xl hover:bg-light-gray"
                 style={{ background: "blue", borderRadius: "50%" }}
+                onClick={() => setThemeSettings(true)}
               >
                 <FiSettings />
               </button>
@@ -62,6 +63,8 @@ function App() {
             </div>
 
             <div>
+              {themeSettings && <ThemeSettings />}
+
               <Routes>
                 {/* Dashboard */}
                 <Route path="/" element={<Ecommerce />} />
