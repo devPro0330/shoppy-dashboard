@@ -14,7 +14,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <TooltipComponent content={title} position="BottomCenter">
     <button
       type="button"
-      onClick={customFunc}
+      onClick={() => customFunc()}
       style={{ color }}
       className="relative p-3 text-xl rounded-full hover:bg-light-gray"
     >
@@ -27,22 +27,22 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   </TooltipComponent>
 );
 
-function Navbar() {
+const Navbar = () => {
   const {
+    currentColor,
     activeMenu,
     setActiveMenu,
-    isClicked,
-    setIsClicked,
     handleClick,
-    screenSize,
+    isClicked,
     setScreenSize,
-    currentColor,
+    screenSize,
   } = useStateContext();
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
 
     window.addEventListener("resize", handleResize);
+
     handleResize();
 
     return () => window.removeEventListener("resize", handleResize);
@@ -56,15 +56,16 @@ function Navbar() {
     }
   }, [screenSize]);
 
+  const handleActiveMenu = () => setActiveMenu(!activeMenu);
+
   return (
-    <div className="relative flex justify-between p-2 md:mx-6">
+    <div className="relative flex justify-between p-2 md:ml-6 md:mr-6">
       <NavButton
         title="Menu"
-        customFunc={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)}
+        customFunc={handleActiveMenu}
         color={currentColor}
         icon={<AiOutlineMenu />}
       />
-
       <div className="flex">
         <NavButton
           title="Cart"
@@ -80,8 +81,8 @@ function Navbar() {
           icon={<BsChatLeft />}
         />
         <NavButton
-          title="Notifications"
-          dotColor="#03C9D7"
+          title="Notification"
+          dotColor="rgb(254, 201, 15)"
           customFunc={() => handleClick("notification")}
           color={currentColor}
           icon={<RiNotification3Line />}
@@ -91,7 +92,11 @@ function Navbar() {
             className="flex items-center gap-2 p-1 rounded-lg cursor-pointer hover:bg-light-gray"
             onClick={() => handleClick("userProfile")}
           >
-            <img className="w-8 h-8 rounded-full" src={avatar} />
+            <img
+              className="w-8 h-8 rounded-full"
+              src={avatar}
+              alt="user-profile"
+            />
             <p>
               <span className="text-gray-400 text-14">Hi,</span>{" "}
               <span className="ml-1 font-bold text-gray-400 text-14">
@@ -109,6 +114,6 @@ function Navbar() {
       </div>
     </div>
   );
-}
+};
 
 export default Navbar;

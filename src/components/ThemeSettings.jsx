@@ -6,15 +6,15 @@ import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import { themeColors } from "../data/dummy";
 import { useStateContext } from "../contexts/ContextProvider";
 
-function ThemeSettings() {
+const ThemeSettings = () => {
   const { setColor, setMode, currentMode, currentColor, setThemeSettings } =
     useStateContext();
 
   return (
     <div className="fixed top-0 right-0 w-screen bg-half-transparent nav-item">
-      <div className="float-right h-screen dark:text-gray-200 bg-white dark:[#484B52] w-400">
+      <div className="float-right h-screen dark:text-gray-200  bg-white dark:bg-[#484B52] w-400">
         <div className="flex items-center justify-between p-4 ml-4">
-          <p className="text-xl font-semibold">Settings</p>
+          <p className="text-lg font-semibold">Settings</p>
           <button
             type="button"
             onClick={() => setThemeSettings(false)}
@@ -24,9 +24,9 @@ function ThemeSettings() {
             <MdOutlineCancel />
           </button>
         </div>
-
         <div className="flex-col p-4 ml-4 border-t-1 border-color">
-          <p className="text-lg font-semibold">Theme Options</p>
+          <p className="text-xl font-semibold ">Theme Option</p>
+
           <div className="mt-4">
             <input
               type="radio"
@@ -37,28 +37,29 @@ function ThemeSettings() {
               onChange={setMode}
               checked={currentMode === "Light"}
             />
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label htmlFor="light" className="ml-2 cursor-pointer text-md">
               Light
             </label>
           </div>
-          <div className="mt-4">
+          <div className="mt-2">
             <input
               type="radio"
               id="dark"
               name="theme"
               value="Dark"
-              className="cursor-pointer"
               onChange={setMode}
+              className="cursor-pointer"
               checked={currentMode === "Dark"}
             />
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label htmlFor="dark" className="ml-2 cursor-pointer text-md">
               Dark
             </label>
           </div>
         </div>
-
-        <div className="flex-col p-4 ml-4 border-t-1 border-color">
-          <p className="text-lg font-semibold">Theme Colors</p>
+        <div className="p-4 ml-4 border-t-1 border-color">
+          <p className="text-xl font-semibold ">Theme Colors</p>
           <div className="flex gap-3">
             {themeColors.map((item, index) => (
               <TooltipComponent
@@ -66,7 +67,10 @@ function ThemeSettings() {
                 content={item.name}
                 position="TopCenter"
               >
-                <div className="relative flex items-center gap-5 mt-2 cursor-pointer">
+                <div
+                  className="relative flex items-center gap-5 mt-2 cursor-pointer"
+                  key={item.name}
+                >
                   <button
                     type="button"
                     className="w-10 h-10 rounded-full cursor-pointer"
@@ -87,6 +91,6 @@ function ThemeSettings() {
       </div>
     </div>
   );
-}
+};
 
 export default ThemeSettings;
