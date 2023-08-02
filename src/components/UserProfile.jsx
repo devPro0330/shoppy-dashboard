@@ -35,7 +35,7 @@ const UserProfile = () => {
             Administrator
           </p>
           <p className="text-sm font-semibold text-gray-500 dark:text-gray-400">
-            info@shop.com
+            michael.info@shoppy.com
           </p>
         </div>
       </div>
