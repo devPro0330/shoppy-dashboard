@@ -20,7 +20,7 @@ const Notification = () => {
             className="p-1 px-2 text-xs text-white rounded bg-orange-theme "
           >
             {" "}
-            5 New
+            3 New
           </button>
         </div>
         <Button
