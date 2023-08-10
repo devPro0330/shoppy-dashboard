@@ -19,7 +19,7 @@ function Ecommerce() {
           <div className="flex items-center justify-between">
             <div>
               <p className="font-bold text-gray-400">Earnings</p>
-              <p className="text-2xl">$63,448.78</p>
+              <p className="text-2xl">$63,342.78</p>
             </div>
           </div>
           <div className="mt-6">
@@ -81,7 +81,7 @@ function Ecommerce() {
             <div className="pr-10 m-4 border-r-1 border-color">
               <div>
                 <p>
-                  <span className="text-3xl font-semibold">$93,234</span>
+                  <span className="text-3xl font-semibold">$93,532</span>
                   <span className="p-1.5 hover:drop-shadow-xl cursor-pointer rounded-full text-white bg-green-400 ml-3 text-xs">
                     45%
                   </span>
@@ -90,7 +90,7 @@ function Ecommerce() {
               </div>
               <div className="mt-8">
                 <p>
-                  <span className="text-3xl font-semibold">$35,234</span>
+                  <span className="text-3xl font-semibold">$35,894</span>
                 </p>
                 <p className="mt-1 text-gray-500">Expense</p>
               </div>
